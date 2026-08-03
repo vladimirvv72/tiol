@@ -1,1 +1,653 @@
-<h1>Добро пожаловать!</h1>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Катализатор сероочистки ИВКАЗ для нефтеперерабатывающих и газоперерабатывающих предприятий. Очистка углеводородного сырья от сероводорода и меркаптанов.">
+  <meta name="theme-color" content="#07131d">
+  <title>ИВКАЗ — катализатор сероочистки | АО «ТИОЛ»</title>
+  <style>
+    :root {
+      --bg: #07131d;
+      --bg-soft: #0b1d2a;
+      --panel: rgba(17, 42, 57, .72);
+      --panel-solid: #102939;
+      --text: #f3f7f9;
+      --muted: #9db0bb;
+      --line: rgba(255,255,255,.12);
+      --cyan: #23c9cc;
+      --cyan-light: #8cf1ed;
+      --lime: #c5ef59;
+      --white: #ffffff;
+      --max: 1240px;
+      --radius: 24px;
+      --shadow: 0 28px 80px rgba(0,0,0,.30);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 90% 8%, rgba(35,201,204,.11), transparent 28%),
+        radial-gradient(circle at 0% 45%, rgba(197,239,89,.06), transparent 24%),
+        var(--bg);
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      line-height: 1.55;
+      overflow-x: hidden;
+    }
+
+    body.menu-open { overflow: hidden; }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea { font: inherit; }
+    img { display: block; max-width: 100%; }
+    .container { width: min(calc(100% - 40px), var(--max)); margin: 0 auto; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--cyan-light);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: var(--cyan);
+    }
+
+    header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 50;
+      border-bottom: 1px solid transparent;
+      transition: .25s ease;
+    }
+    header.scrolled {
+      background: rgba(7,19,29,.86);
+      backdrop-filter: blur(18px);
+      border-color: var(--line);
+    }
+    .nav {
+      height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+    .brand { display: flex; align-items: center; gap: 13px; min-width: max-content; }
+    .brand-mark {
+      position: relative;
+      width: 40px;
+      height: 40px;
+      border: 1px solid rgba(140,241,237,.42);
+      border-radius: 12px;
+      background: linear-gradient(145deg, rgba(35,201,204,.18), rgba(197,239,89,.04));
+      overflow: hidden;
+    }
+    .brand-mark::before, .brand-mark::after {
+      content: "";
+      position: absolute;
+      border: 2px solid var(--cyan);
+      border-radius: 50%;
+    }
+    .brand-mark::before { width: 24px; height: 24px; left: 6px; top: 6px; }
+    .brand-mark::after { width: 8px; height: 8px; left: 14px; top: 14px; background: var(--lime); border-color: var(--lime); }
+    .brand strong { display: block; letter-spacing: .08em; font-size: 15px; }
+    .brand small { display: block; color: var(--muted); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; }
+    .nav-links { display: flex; align-items: center; gap: 27px; color: #c7d3d9; font-size: 14px; }
+    .nav-links a:hover { color: var(--white); }
+    .nav-action, .btn {
+      border: 0;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 48px;
+      padding: 0 20px;
+      border-radius: 12px;
+      font-weight: 750;
+      transition: transform .2s ease, background .2s ease, border-color .2s ease;
+    }
+    .nav-action, .btn-primary { background: var(--lime); color: #0b1720; }
+    .nav-action:hover, .btn-primary:hover { transform: translateY(-2px); background: #d7ff6b; }
+    .btn-secondary {
+      color: var(--white);
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.18);
+    }
+    .btn-secondary:hover { transform: translateY(-2px); border-color: var(--cyan); background: rgba(35,201,204,.08); }
+    .menu-btn { display:none; width:46px; height:46px; border:1px solid var(--line); border-radius:12px; background:transparent; color:white; }
+
+    .hero {
+      min-height: 820px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding: 140px 0 84px;
+      isolation: isolate;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -3;
+      background:
+        linear-gradient(90deg, rgba(7,19,29,.98) 0%, rgba(7,19,29,.90) 42%, rgba(7,19,29,.40) 73%, rgba(7,19,29,.58) 100%),
+        linear-gradient(0deg, var(--bg) 0%, transparent 34%),
+        url("https://images.unsplash.com/photo-1516939884455-1445c8652f83?auto=format&fit=crop&w=2200&q=88") center/cover no-repeat;
+    }
+    .hero::after {
+      content:"";
+      position:absolute;
+      right:-120px;
+      top:170px;
+      width:430px;
+      height:430px;
+      border:1px solid rgba(35,201,204,.16);
+      border-radius:50%;
+      box-shadow: 0 0 0 60px rgba(35,201,204,.025), 0 0 0 120px rgba(35,201,204,.018);
+      z-index:-2;
+    }
+    .hero-content { max-width: 830px; }
+    h1 {
+      margin: 22px 0 24px;
+      font-size: clamp(52px, 7.2vw, 102px);
+      line-height: .94;
+      letter-spacing: -.055em;
+      max-width: 920px;
+    }
+    h1 span { color: var(--cyan-light); }
+    .hero-lead {
+      max-width: 730px;
+      color: #c6d3d9;
+      font-size: clamp(18px, 2vw, 23px);
+      line-height: 1.55;
+      margin: 0 0 34px;
+    }
+    .hero-actions { display:flex; flex-wrap:wrap; gap:14px; margin-bottom:45px; }
+    .hero-facts { display:flex; flex-wrap:wrap; gap: 22px 42px; }
+    .fact { display:flex; align-items:center; gap:11px; color:#d6e0e4; font-size:14px; }
+    .fact i { width:8px; height:8px; border-radius:50%; background:var(--cyan); box-shadow:0 0 0 5px rgba(35,201,204,.10); }
+
+    section { padding: 110px 0; }
+    .section-head { display:flex; align-items:end; justify-content:space-between; gap:40px; margin-bottom:46px; }
+    h2 { margin:13px 0 0; font-size:clamp(36px, 5vw, 64px); line-height:1.02; letter-spacing:-.04em; max-width:850px; }
+    .section-head p { color:var(--muted); max-width:480px; margin:0; }
+
+    .product-grid { display:grid; grid-template-columns: 1.04fr .96fr; gap:26px; }
+    .product-visual {
+      min-height: 570px;
+      border-radius: var(--radius);
+      overflow:hidden;
+      position:relative;
+      background:
+        linear-gradient(180deg, rgba(7,19,29,.08), rgba(7,19,29,.85)),
+        url("https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=1400&q=86") center/cover no-repeat;
+      box-shadow:var(--shadow);
+    }
+    .visual-label {
+      position:absolute; left:24px; bottom:24px; right:24px;
+      padding:22px;
+      border:1px solid rgba(255,255,255,.15);
+      border-radius:17px;
+      background:rgba(7,19,29,.70);
+      backdrop-filter:blur(14px);
+    }
+    .visual-label strong { display:block; font-size:22px; margin-bottom:7px; }
+    .visual-label span { color:#b8c7ce; font-size:14px; }
+    .product-copy { display:grid; gap:16px; }
+    .info-card {
+      padding:27px;
+      background:linear-gradient(145deg, rgba(17,42,57,.93), rgba(10,27,39,.92));
+      border:1px solid var(--line);
+      border-radius:20px;
+      transition:.22s ease;
+    }
+    .info-card:hover { transform:translateY(-4px); border-color:rgba(35,201,204,.38); }
+    .info-num { color:var(--cyan); font-size:13px; font-weight:800; letter-spacing:.12em; }
+    .info-card h3 { margin:12px 0 8px; font-size:23px; }
+    .info-card p { margin:0; color:var(--muted); }
+
+    .applications { background:linear-gradient(180deg, transparent, rgba(12,32,45,.55), transparent); }
+    .cards { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    .app-card {
+      position:relative;
+      min-height:255px;
+      padding:28px;
+      border-radius:20px;
+      border:1px solid var(--line);
+      overflow:hidden;
+      background:rgba(14,36,50,.66);
+    }
+    .app-card::after {
+      content:"";
+      position:absolute;
+      right:-40px; bottom:-55px;
+      width:150px; height:150px;
+      border:1px solid rgba(35,201,204,.17);
+      border-radius:50%;
+    }
+    .app-icon {
+      width:48px; height:48px; display:grid; place-items:center;
+      border-radius:13px; background:rgba(35,201,204,.11); color:var(--cyan-light);
+      border:1px solid rgba(35,201,204,.22); font-size:21px;
+    }
+    .app-card h3 { margin:48px 0 10px; font-size:22px; }
+    .app-card p { margin:0; color:var(--muted); font-size:15px; }
+
+    .process-wrap {
+      display:grid; grid-template-columns:.85fr 1.15fr; gap:45px; align-items:center;
+    }
+    .process-copy p { color:var(--muted); font-size:18px; }
+    .process-list { margin-top:30px; display:grid; gap:14px; }
+    .process-step {
+      display:grid; grid-template-columns:52px 1fr; gap:16px; align-items:start;
+      padding:18px 0; border-top:1px solid var(--line);
+    }
+    .process-step b { color:var(--cyan-light); font-size:14px; }
+    .process-step strong { display:block; font-size:18px; margin-bottom:4px; }
+    .process-step span { color:var(--muted); font-size:14px; }
+    .process-visual {
+      min-height:610px;
+      border-radius:var(--radius);
+      overflow:hidden;
+      position:relative;
+      background:
+        linear-gradient(180deg, rgba(7,19,29,.08), rgba(7,19,29,.82)),
+        url("https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1500&q=88") center/cover no-repeat;
+    }
+    .diagram {
+      position:absolute; inset:auto 24px 24px;
+      display:grid; grid-template-columns:repeat(3,1fr); gap:8px;
+    }
+    .diagram div {
+      min-height:88px; padding:16px; border-radius:14px;
+      background:rgba(7,19,29,.76); border:1px solid rgba(255,255,255,.13);
+      backdrop-filter:blur(12px);
+      font-size:13px; color:#c8d4da;
+    }
+    .diagram strong { display:block; color:white; margin-bottom:4px; }
+
+    .advantages-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+    .adv {
+      padding:25px 22px;
+      min-height:220px;
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:18px;
+    }
+    .adv small { color:var(--cyan); font-weight:800; }
+    .adv h3 { font-size:20px; margin:32px 0 9px; }
+    .adv p { color:var(--muted); font-size:14px; margin:0; }
+
+    .evidence {
+      padding: 0;
+      width:min(calc(100% - 40px), var(--max));
+      margin:110px auto;
+      border:1px solid rgba(35,201,204,.22);
+      border-radius:28px;
+      overflow:hidden;
+      background:linear-gradient(115deg, rgba(19,55,67,.94), rgba(9,25,36,.98));
+    }
+    .evidence-inner { display:grid; grid-template-columns:1.1fr .9fr; }
+    .evidence-copy { padding:60px; }
+    .evidence-copy h2 { font-size:clamp(34px,4vw,55px); }
+    .evidence-copy p { color:#b9c8cf; max-width:650px; }
+    .evidence-metrics {
+      padding:42px;
+      background:rgba(35,201,204,.06);
+      display:grid; align-content:center; gap:14px;
+    }
+    .metric { padding:22px; border-radius:17px; border:1px solid var(--line); background:rgba(7,19,29,.44); }
+    .metric strong { font-size:30px; color:var(--cyan-light); }
+    .metric span { display:block; color:var(--muted); font-size:13px; margin-top:4px; }
+
+    .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    .about-card { padding:38px; border-radius:22px; border:1px solid var(--line); background:rgba(16,41,57,.60); }
+    .about-card p { color:var(--muted); font-size:17px; }
+    .requisites { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:28px; }
+    .req { padding:15px 0; border-top:1px solid var(--line); }
+    .req small { display:block; color:var(--muted); }
+    .req strong { font-size:15px; }
+
+    .contact { padding-top:30px; }
+    .contact-box {
+      display:grid; grid-template-columns:.95fr 1.05fr;
+      border-radius:28px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      background:linear-gradient(140deg,#102f3d,#0a1c28);
+      box-shadow:var(--shadow);
+    }
+    .contact-copy { padding:58px; }
+    .contact-copy p { color:#b5c6cd; max-width:520px; }
+    .contact-links { display:grid; gap:12px; margin-top:36px; }
+    .contact-link { display:flex; align-items:center; gap:13px; font-size:18px; }
+    .contact-link i { width:41px; height:41px; display:grid; place-items:center; border-radius:11px; background:rgba(35,201,204,.12); color:var(--cyan-light); font-style:normal; }
+    form { padding:48px; background:rgba(5,15,22,.35); }
+    .field { display:grid; gap:7px; margin-bottom:14px; }
+    label { color:#c7d4d9; font-size:13px; }
+    input, textarea {
+      width:100%; color:white;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.13);
+      border-radius:12px;
+      padding:15px 16px;
+      outline:none;
+    }
+    input:focus, textarea:focus { border-color:var(--cyan); box-shadow:0 0 0 3px rgba(35,201,204,.09); }
+    textarea { min-height:120px; resize:vertical; }
+    .form-note { color:var(--muted); font-size:12px; margin:12px 0 0; }
+    .form-status { min-height:24px; font-size:13px; margin-top:12px; color:var(--cyan-light); }
+
+    footer { padding:36px 0 44px; }
+    .footer-row { display:flex; justify-content:space-between; gap:30px; align-items:center; color:var(--muted); font-size:13px; border-top:1px solid var(--line); padding-top:28px; }
+
+    .reveal { opacity:0; transform:translateY(26px); transition:opacity .65s ease, transform .65s ease; }
+    .reveal.visible { opacity:1; transform:none; }
+
+    @media (max-width: 980px) {
+      .nav-links, .nav-action { display:none; }
+      .menu-btn { display:block; }
+      .nav-links.open {
+        display:flex;
+        position:fixed;
+        inset:78px 0 0;
+        flex-direction:column;
+        align-items:flex-start;
+        padding:38px 24px;
+        background:rgba(7,19,29,.98);
+        font-size:22px;
+      }
+      .product-grid, .process-wrap, .evidence-inner, .about-grid, .contact-box { grid-template-columns:1fr; }
+      .cards { grid-template-columns:1fr 1fr; }
+      .advantages-grid { grid-template-columns:1fr 1fr; }
+      .process-visual { min-height:500px; }
+      .evidence-copy, .evidence-metrics, .contact-copy, form { padding:38px; }
+    }
+
+    @media (max-width: 640px) {
+      .container { width:min(calc(100% - 26px), var(--max)); }
+      .hero { min-height:780px; padding-top:120px; }
+      .hero::before { background-position:61% center; }
+      h1 { font-size:52px; }
+      section { padding:78px 0; }
+      .section-head { display:block; }
+      .section-head p { margin-top:20px; }
+      .cards, .advantages-grid { grid-template-columns:1fr; }
+      .product-visual { min-height:430px; }
+      .diagram { grid-template-columns:1fr; }
+      .diagram div { min-height:auto; }
+      .process-visual { min-height:600px; }
+      .evidence { width:calc(100% - 26px); margin:78px auto; }
+      .evidence-copy, .evidence-metrics, .contact-copy, form, .about-card { padding:27px; }
+      .requisites { grid-template-columns:1fr; }
+      .footer-row { display:block; }
+      .footer-row div + div { margin-top:8px; }
+    }
+  </style>
+</head>
+<body>
+<header id="header">
+  <div class="container nav">
+    <a class="brand" href="#top" aria-label="АО ТИОЛ — на главную">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span><strong>ТИОЛ</strong><small>Научно-техническая компания</small></span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#product">О продукте</a>
+      <a href="#applications">Применение</a>
+      <a href="#advantages">Преимущества</a>
+      <a href="#company">Компания</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+    <a class="nav-action" href="#contacts">Запросить информацию</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Открыть меню">☰</button>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content reveal">
+        <span class="eyebrow">Промышленная сероочистка</span>
+        <h1>Катализатор <span>ИВКАЗ</span></h1>
+        <p class="hero-lead">Российское каталитическое решение для очистки углеводородного сырья от сероводорода и меркаптанов на нефтеперерабатывающих и газоперерабатывающих предприятиях.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contacts">Получить техническую информацию →</a>
+          <a class="btn btn-secondary" href="#product">Изучить продукт</a>
+        </div>
+        <div class="hero-facts">
+          <span class="fact"><i></i> Для НПЗ и ГПЗ</span>
+          <span class="fact"><i></i> Промышленное применение</span>
+          <span class="fact"><i></i> Техническая консультация</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="product">
+    <div class="container">
+      <div class="section-head reveal">
+        <div>
+          <span class="eyebrow">О продукте</span>
+          <h2>Контролируемая очистка сырья от сернистых соединений</h2>
+        </div>
+        <p>ИВКАЗ применяется в окислительно-каталитических процессах сероочистки и демеркаптанизации. Конкретная марка и схема применения подбираются под состав сырья и параметры установки.</p>
+      </div>
+      <div class="product-grid">
+        <div class="product-visual reveal">
+          <div class="visual-label">
+            <strong>Каталитическая композиция</strong>
+            <span>Точное исполнение, форма поставки и режим применения определяются после анализа технологической задачи заказчика.</span>
+          </div>
+        </div>
+        <div class="product-copy">
+          <article class="info-card reveal">
+            <span class="info-num">01 / НАЗНАЧЕНИЕ</span>
+            <h3>Сероочистка углеводородного сырья</h3>
+            <p>Удаление сероводорода и меркаптанов из технологических потоков нефтеперерабатывающих и газоперерабатывающих производств.</p>
+          </article>
+          <article class="info-card reveal">
+            <span class="info-num">02 / ПРОЦЕССЫ</span>
+            <h3>Демеркаптанизация и регенерация щёлочи</h3>
+            <p>Применение в каталитических схемах окисления меркаптидов и восстановления работоспособности щелочного раствора.</p>
+          </article>
+          <article class="info-card reveal">
+            <span class="info-num">03 / ПОДБОР</span>
+            <h3>Под конкретную установку</h3>
+            <p>Рекомендации формируются с учётом состава сырья, текущей технологической схемы, производительности и требований к очищенному продукту.</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="applications" id="applications">
+    <div class="container">
+      <div class="section-head reveal">
+        <div>
+          <span class="eyebrow">Области применения</span>
+          <h2>Для различных потоков нефтегазопереработки</h2>
+        </div>
+        <p>Ниже указаны основные направления применения семейства катализаторов ИВКАЗ. Техническая применимость подтверждается отдельно для каждого проекта.</p>
+      </div>
+      <div class="cards">
+        <article class="app-card reveal"><div class="app-icon">01</div><h3>Нефть и газовый конденсат</h3><p>Очистка сырьевых потоков от сероводорода и меркаптановых соединений.</p></article>
+        <article class="app-card reveal"><div class="app-icon">02</div><h3>Сжиженные углеводородные газы</h3><p>Каталитическая демеркаптанизация СУГ в промышленных технологических схемах.</p></article>
+        <article class="app-card reveal"><div class="app-icon">03</div><h3>Бензиновые фракции</h3><p>Прямогонные и крекинговые фракции, нафта и лёгкие углеводородные потоки.</p></article>
+        <article class="app-card reveal"><div class="app-icon">04</div><h3>Технологические конденсаты</h3><p>Локальная очистка сульфидсодержащих водных и конденсатных потоков.</p></article>
+        <article class="app-card reveal"><div class="app-icon">05</div><h3>Щелочные растворы</h3><p>Окислительно-каталитическая регенерация отработанного щелочного раствора.</p></article>
+        <article class="app-card reveal"><div class="app-icon">06</div><h3>Проектные решения</h3><p>Подбор применения для существующих и модернизируемых установок сероочистки.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container process-wrap">
+      <div class="process-copy reveal">
+        <span class="eyebrow">Работа с заказчиком</span>
+        <h2>От исходных данных до технологической рекомендации</h2>
+        <p>Поставка промышленного катализатора начинается не с типового коммерческого предложения, а с проверки применимости решения к конкретному процессу.</p>
+        <div class="process-list">
+          <div class="process-step"><b>01</b><div><strong>Получаем параметры</strong><span>Состав сырья, сернистые соединения, производительность и текущая схема очистки.</span></div></div>
+          <div class="process-step"><b>02</b><div><strong>Анализируем задачу</strong><span>Определяем подходящую марку, способ дозирования и требования к внедрению.</span></div></div>
+          <div class="process-step"><b>03</b><div><strong>Готовим предложение</strong><span>Предоставляем техническую информацию и условия поставки для согласования.</span></div></div>
+        </div>
+      </div>
+      <div class="process-visual reveal">
+        <div class="diagram">
+          <div><strong>Исходный поток</strong>Сероводород и меркаптаны</div>
+          <div><strong>Каталитический процесс</strong>Окисление и регенерация</div>
+          <div><strong>Результат</strong>Очищенный продукт</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="advantages">
+    <div class="container">
+      <div class="section-head reveal">
+        <div><span class="eyebrow">Преимущества</span><h2>Решение для промышленной эксплуатации</h2></div>
+        <p>Основной акцент — не на абстрактных свойствах катализатора, а на его интеграции в действующий технологический процесс предприятия.</p>
+      </div>
+      <div class="advantages-grid">
+        <article class="adv reveal"><small>01</small><h3>Российская разработка</h3><p>Локальное технологическое решение для задач сероочистки нефтегазового сырья.</p></article>
+        <article class="adv reveal"><small>02</small><h3>Широкая применимость</h3><p>Различные углеводородные и технологические потоки — после проверки условий применения.</p></article>
+        <article class="adv reveal"><small>03</small><h3>Инженерный подбор</h3><p>Подбор марки и режима работы с учётом реальных параметров установки заказчика.</p></article>
+        <article class="adv reveal"><small>04</small><h3>Прямой контакт</h3><p>Обсуждение задачи со специалистами без многоуровневой цепочки посредников.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="evidence reveal">
+    <div class="evidence-inner">
+      <div class="evidence-copy">
+        <span class="eyebrow">Промышленный опыт</span>
+        <h2>Технология, применяемая на производственных объектах</h2>
+        <p>В открытых отраслевых материалах семейство ИВКАЗ описывается как катализатор, применявшийся на десятках промышленных установок в России, СНГ и других странах. Параметры конкретного внедрения и референс-лист предоставляются по запросу и при наличии права на раскрытие.</p>
+      </div>
+      <div class="evidence-metrics">
+        <div class="metric"><strong>40+</strong><span>установок упоминается в открытых отраслевых материалах</span></div>
+        <div class="metric"><strong>НПЗ / ГПЗ</strong><span>целевая промышленная инфраструктура применения</span></div>
+        <div class="metric"><strong>B2B</strong><span>техническое согласование и проектная поставка</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="company">
+    <div class="container">
+      <div class="section-head reveal">
+        <div><span class="eyebrow">О компании</span><h2>АО «ТИОЛ»</h2></div>
+        <p>Научно-техническая организация из Казани, работающая в области исследований и разработок в естественных и технических науках.</p>
+      </div>
+      <div class="about-grid">
+        <article class="about-card reveal">
+          <h3>Компетенция в промышленной химии</h3>
+          <p>Компания предлагает катализатор сероочистки ИВКАЗ промышленным заказчикам и рассматривает обращения по подбору решения для конкретного технологического процесса.</p>
+          <p>Приоритет сайта — предоставить инженерам, технологам и закупочным подразделениям достоверную исходную информацию и прямой канал связи.</p>
+        </article>
+        <article class="about-card reveal">
+          <h3>Реквизиты</h3>
+          <div class="requisites">
+            <div class="req"><small>Наименование</small><strong>АО «ТИОЛ»</strong></div>
+            <div class="req"><small>ИНН</small><strong>1660075283</strong></div>
+            <div class="req"><small>ОГРН</small><strong>1041630232742</strong></div>
+            <div class="req"><small>Год регистрации</small><strong>2004</strong></div>
+            <div class="req"><small>Город</small><strong>Казань</strong></div>
+            <div class="req"><small>Адрес</small><strong>ул. Николая Ершова, 35А</strong></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contacts">
+    <div class="container">
+      <div class="contact-box reveal">
+        <div class="contact-copy">
+          <span class="eyebrow">Связаться</span>
+          <h2>Обсудить задачу сероочистки</h2>
+          <p>Направьте исходные данные по сырью и установке. Представитель АО «ТИОЛ» свяжется с вами для уточнения задачи и подготовки технической информации.</p>
+          <div class="contact-links">
+            <a class="contact-link" href="tel:+79172491589"><i>☎</i><span>+7 917 249-15-89</span></a>
+            <a class="contact-link" href="mailto:tiol.zao@mail.ru"><i>✉</i><span>tiol.zao@mail.ru</span></a>
+          </div>
+        </div>
+        <form id="requestForm">
+          <div class="field"><label for="name">Имя и должность</label><input id="name" name="name" required placeholder="Иван Петров, главный технолог"></div>
+          <div class="field"><label for="company">Компания</label><input id="company" name="company" required placeholder="Название предприятия"></div>
+          <div class="field"><label for="contact">Телефон или e-mail</label><input id="contact" name="contact" required placeholder="+7 ... / name@company.ru"></div>
+          <div class="field"><label for="message">Кратко о задаче</label><textarea id="message" name="message" placeholder="Тип сырья, текущая схема очистки, производительность, требуемый результат"></textarea></div>
+          <button class="btn btn-primary" type="submit">Подготовить письмо →</button>
+          <p class="form-note">После нажатия откроется почтовая программа с заполненным обращением. Данные не передаются на сторонний сервер.</p>
+          <div class="form-status" id="formStatus" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-row">
+    <div>© <span id="year"></span> АО «ТИОЛ». Катализатор сероочистки ИВКАЗ.</div>
+    <div>Информация на сайте не является публичной офертой.</div>
+  </div>
+</footer>
+
+<script>
+  const header = document.getElementById('header');
+  const menuBtn = document.getElementById('menuBtn');
+  const navLinks = document.getElementById('navLinks');
+
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 24);
+  });
+
+  menuBtn.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+    document.body.classList.toggle('menu-open');
+    menuBtn.textContent = navLinks.classList.contains('open') ? '✕' : '☰';
+  });
+
+  navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    document.body.classList.remove('menu-open');
+    menuBtn.textContent = '☰';
+  }));
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: .12 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  document.getElementById('requestForm').addEventListener('submit', (event) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const subject = encodeURIComponent('Запрос по катализатору ИВКАЗ — ' + data.get('company'));
+    const body = encodeURIComponent(
+      'Имя и должность: ' + data.get('name') + '\n' +
+      'Компания: ' + data.get('company') + '\n' +
+      'Контакт: ' + data.get('contact') + '\n\n' +
+      'Описание задачи:\n' + (data.get('message') || 'Не указано')
+    );
+    document.getElementById('formStatus').textContent = 'Открываем почтовую программу…';
+    window.location.href = 'mailto:tiol.zao@mail.ru?subject=' + subject + '&body=' + body;
+  });
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
