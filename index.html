@@ -1,12 +1,13 @@
 <!DOCTYPE html>
+
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Катализатор сероочистки ИВКАЗ для нефтеперерабатывающих и газоперерабатывающих предприятий. Очистка углеводородного сырья от сероводорода и меркаптанов.">
-  <meta name="theme-color" content="#07131d">
-  <title>ИВКАЗ — катализатор сероочистки | АО «ТИОЛ»</title>
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Технологии и катализаторы сероочистки ИВКАЗ и КСТ для нефтеперерабатывающих и газоперерабатывающих предприятий. Очистка углеводородного сырья от сероводорода, меркаптанов и других сернистых соединений." name="description"/>
+<meta content="#07131d" name="theme-color"/>
+<title>Технологии и катализаторы сероочистки | АО «ТИОЛ»</title>
+<style>
     :root {
       --bg: #07131d;
       --bg-soft: #0b1d2a;
@@ -261,11 +262,80 @@
     .info-card h3 { margin:12px 0 8px; font-size:23px; }
     .info-card p { margin:0; color:var(--muted); }
 
+
+    .section-kicker { color:var(--text); font-weight:800; }
+    .catalyst-layout { align-items:start; }
+    .catalyst-selector {
+      position:relative;
+      overflow:hidden;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:
+        radial-gradient(circle at 92% 4%, rgba(35,201,204,.14), transparent 28%),
+        linear-gradient(145deg, rgba(17,42,57,.94), rgba(8,24,35,.97));
+      box-shadow:var(--shadow);
+    }
+    .catalyst-selector::after {
+      content:"";
+      position:absolute;
+      right:-110px;
+      top:-110px;
+      width:250px;
+      height:250px;
+      border:1px solid rgba(35,201,204,.14);
+      border-radius:50%;
+      pointer-events:none;
+    }
+    .selector-top { padding:30px 30px 25px; border-bottom:1px solid var(--line); position:relative; z-index:1; }
+    .selector-label { color:var(--cyan-light); font-size:12px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; }
+    .selector-top h3 { margin:12px 0 8px; font-size:clamp(25px,3vw,34px); line-height:1.12; letter-spacing:-.025em; max-width:560px; }
+    .selector-top p { margin:0; color:var(--muted); font-size:14px; }
+    .family-item { position:relative; z-index:1; border-bottom:1px solid var(--line); }
+    .family-item:last-child { border-bottom:0; }
+    .family-toggle {
+      width:100%;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      padding:23px 28px;
+      border:0;
+      background:transparent;
+      color:var(--text);
+      text-align:left;
+      cursor:pointer;
+      transition:background .2s ease;
+    }
+    .family-toggle:hover { background:rgba(35,201,204,.055); }
+    .family-toggle:focus-visible { outline:2px solid var(--cyan); outline-offset:-3px; }
+    .family-title-wrap { display:flex; align-items:center; gap:16px; min-width:0; }
+    .family-index { color:var(--cyan); font-size:12px; font-weight:800; letter-spacing:.12em; }
+    .family-title-wrap strong { display:block; font-size:24px; letter-spacing:.02em; }
+    .family-title-wrap small { display:block; margin-top:3px; color:var(--muted); font-size:13px; }
+    .family-plus { position:relative; width:28px; height:28px; flex:0 0 auto; border:1px solid rgba(255,255,255,.16); border-radius:50%; }
+    .family-plus::before, .family-plus::after { content:""; position:absolute; left:7px; right:7px; top:13px; height:1.5px; background:var(--cyan-light); transition:transform .24s ease; }
+    .family-plus::after { transform:rotate(90deg); }
+    .family-item.open .family-plus::after { transform:rotate(0deg); }
+    .family-details { display:grid; grid-template-rows:0fr; transition:grid-template-rows .32s ease; background:rgba(3,13,20,.24); }
+    .family-item.open .family-details { grid-template-rows:1fr; }
+    .family-details-inner { overflow:hidden; }
+    .variant-list { padding:0 28px 26px; display:grid; gap:0; }
+    .variant { display:grid; grid-template-columns:38px 1fr; gap:14px; padding:18px 0; border-top:1px solid rgba(255,255,255,.09); }
+    .variant-num { color:var(--cyan); font-size:11px; font-weight:800; letter-spacing:.1em; padding-top:3px; }
+    .variant strong { display:block; font-size:16px; margin-bottom:5px; }
+    .variant p { margin:0; color:var(--muted); font-size:14px; line-height:1.55; }
+    .catalyst-copy { align-content:start; }
+    .inline-link { display:inline-flex; margin-top:18px; color:var(--cyan-light); font-size:14px; font-weight:750; }
+    .inline-link:hover { color:var(--white); }
+    .applications-list .app-card { min-height:245px; }
+    .applications-list .app-card h3 { margin-top:34px; }
+    .applications-list .app-card p { max-width:520px; }
+
     .applications { background:linear-gradient(180deg, transparent, rgba(12,32,45,.55), transparent); }
-    .cards { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    .cards { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
     .app-card {
       position:relative;
-      min-height:255px;
+      min-height:230px;
       padding:28px;
       border-radius:20px;
       border:1px solid var(--line);
@@ -517,6 +587,9 @@
       .product-grid, .process-wrap, .evidence-inner, .about-grid, .contact-box { grid-template-columns:1fr; }
       .cards { grid-template-columns:1fr 1fr; }
       .advantages-grid { grid-template-columns:1fr 1fr; }
+      .catalyst-layout { grid-template-columns:1fr; }
+      .catalyst-selector { order:1; }
+      .catalyst-copy { order:2; }
       .process-visual { min-height:500px; }
       .evidence-copy, .evidence-metrics, .contact-copy, form { padding:38px; }
     }
@@ -538,6 +611,13 @@
       .section-head p { margin-top:20px; }
       .cards, .advantages-grid { grid-template-columns:1fr; }
       .product-visual { min-height:430px; }
+      .hero-facts { display:grid; grid-template-columns:1fr; gap:14px; }
+      .family-toggle { padding:20px 20px; }
+      .selector-top { padding:24px 20px 20px; }
+      .variant-list { padding:0 20px 20px; }
+      .variant { grid-template-columns:32px 1fr; }
+      .family-title-wrap strong { font-size:21px; }
+      .applications-list .app-card { min-height:auto; }
       .diagram { grid-template-columns:1fr; }
       .diagram div { min-height:auto; }
       .process-visual { min-height:600px; }
@@ -551,239 +631,261 @@
 </head>
 <body>
 <header id="header">
-  <div class="container nav">
-    <a class="brand" href="#top" aria-label="АО ТИОЛ — на главную">
-      <span class="brand-mark" aria-hidden="true"></span>
-      <span><strong>ТИОЛ</strong><small>Научно-техническая компания</small></span>
-    </a>
-    <nav class="nav-links" id="navLinks">
-      <a href="#product">О продукте</a>
-      <a href="#applications">Применение</a>
-      <a href="#advantages">Преимущества</a>
-      <a href="#company">Компания</a>
-      <a href="#contacts">Контакты</a>
-    </nav>
-    <a class="nav-action" href="#contacts">Запросить информацию</a>
-    <button class="menu-btn" id="menuBtn" aria-label="Открыть меню" aria-expanded="false"><span></span></button>
-  </div>
+<div class="container nav">
+<a aria-label="АО ТИОЛ — на главную" class="brand" href="#top">
+<span aria-hidden="true" class="brand-mark"></span>
+<span><strong>ТИОЛ</strong><small>Научно-техническая компания</small></span>
+</a>
+<nav class="nav-links" id="navLinks">
+<a href="#product">Катализаторы</a>
+<a href="#applications">Применение</a>
+<a href="#advantages">Преимущества</a>
+<a href="#company">Компания</a>
+<a href="#contacts">Контакты</a>
+</nav>
+<a class="nav-action" href="#contacts">Запросить информацию</a>
+<button aria-expanded="false" aria-label="Открыть меню" class="menu-btn" id="menuBtn"><span></span></button>
+</div>
 </header>
 <div class="menu-overlay" id="menuOverlay"></div>
-
 <main id="top">
-  <section class="hero">
-    <div class="container">
-      <div class="hero-content reveal">
-        <span class="eyebrow">Промышленная сероочистка</span>
-        <h1>Катализатор <span>ИВКАЗ</span></h1>
-        <p class="hero-lead">Российское каталитическое решение для очистки углеводородного сырья от сероводорода и меркаптанов на нефтеперерабатывающих и газоперерабатывающих предприятиях.</p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#contacts">Получить техническую информацию →</a>
-          <a class="btn btn-secondary" href="#product">Изучить продукт</a>
-        </div>
-        <div class="hero-facts">
-          <span class="fact"><i></i> Для НПЗ и ГПЗ</span>
-          <span class="fact"><i></i> Промышленное применение</span>
-          <span class="fact"><i></i> Техническая консультация</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="product">
-    <div class="container">
-      <div class="section-head reveal">
-        <div>
-          <span class="eyebrow">О продукте</span>
-          <h2>Контролируемая очистка сырья от сернистых соединений</h2>
-        </div>
-        <p>ИВКАЗ применяется в окислительно-каталитических процессах сероочистки и демеркаптанизации. Конкретная марка и схема применения подбираются под состав сырья и параметры установки.</p>
-      </div>
-      <div class="product-grid">
-        <div class="product-visual reveal">
-          <div class="visual-label">
-            <strong>Каталитическая композиция</strong>
-            <span>Точное исполнение, форма поставки и режим применения определяются после анализа технологической задачи заказчика.</span>
-          </div>
-        </div>
-        <div class="product-copy">
-          <article class="info-card reveal">
-            <span class="info-num">01 / НАЗНАЧЕНИЕ</span>
-            <h3>Сероочистка углеводородного сырья</h3>
-            <p>Удаление сероводорода и меркаптанов из технологических потоков нефтеперерабатывающих и газоперерабатывающих производств.</p>
-          </article>
-          <article class="info-card reveal">
-            <span class="info-num">02 / ПРОЦЕССЫ</span>
-            <h3>Демеркаптанизация и регенерация щёлочи</h3>
-            <p>Применение в каталитических схемах окисления меркаптидов и восстановления работоспособности щелочного раствора.</p>
-          </article>
-          <article class="info-card reveal">
-            <span class="info-num">03 / ПОДБОР</span>
-            <h3>Под конкретную установку</h3>
-            <p>Рекомендации формируются с учётом состава сырья, текущей технологической схемы, производительности и требований к очищенному продукту.</p>
-          </article>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="applications" id="applications">
-    <div class="container">
-      <div class="section-head reveal">
-        <div>
-          <span class="eyebrow">Области применения</span>
-          <h2>Для различных потоков нефтегазопереработки</h2>
-        </div>
-        <p>Ниже указаны основные направления применения семейства катализаторов ИВКАЗ. Техническая применимость подтверждается отдельно для каждого проекта.</p>
-      </div>
-      <div class="cards">
-        <article class="app-card reveal"><div class="app-icon">01</div><h3>Нефть и газовый конденсат</h3><p>Очистка сырьевых потоков от сероводорода и меркаптановых соединений.</p></article>
-        <article class="app-card reveal"><div class="app-icon">02</div><h3>Сжиженные углеводородные газы</h3><p>Каталитическая демеркаптанизация СУГ в промышленных технологических схемах.</p></article>
-        <article class="app-card reveal"><div class="app-icon">03</div><h3>Бензиновые фракции</h3><p>Прямогонные и крекинговые фракции, нафта и лёгкие углеводородные потоки.</p></article>
-        <article class="app-card reveal"><div class="app-icon">04</div><h3>Технологические конденсаты</h3><p>Локальная очистка сульфидсодержащих водных и конденсатных потоков.</p></article>
-        <article class="app-card reveal"><div class="app-icon">05</div><h3>Щелочные растворы</h3><p>Окислительно-каталитическая регенерация отработанного щелочного раствора.</p></article>
-        <article class="app-card reveal"><div class="app-icon">06</div><h3>Проектные решения</h3><p>Подбор применения для существующих и модернизируемых установок сероочистки.</p></article>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="container process-wrap">
-      <div class="process-copy reveal">
-        <span class="eyebrow">Работа с заказчиком</span>
-        <h2>От исходных данных до технологической рекомендации</h2>
-        <p>Поставка промышленного катализатора начинается не с типового коммерческого предложения, а с проверки применимости решения к конкретному процессу.</p>
-        <div class="process-list">
-          <div class="process-step"><b>01</b><div><strong>Получаем параметры</strong><span>Состав сырья, сернистые соединения, производительность и текущая схема очистки.</span></div></div>
-          <div class="process-step"><b>02</b><div><strong>Анализируем задачу</strong><span>Определяем подходящую марку, способ дозирования и требования к внедрению.</span></div></div>
-          <div class="process-step"><b>03</b><div><strong>Готовим предложение</strong><span>Предоставляем техническую информацию и условия поставки для согласования.</span></div></div>
-        </div>
-      </div>
-      <div class="process-visual reveal">
-        <div class="diagram">
-          <div><strong>Исходный поток</strong>Сероводород и меркаптаны</div>
-          <div><strong>Каталитический процесс</strong>Окисление и регенерация</div>
-          <div><strong>Результат</strong>Очищенный продукт</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="advantages">
-    <div class="container">
-      <div class="section-head reveal">
-        <div><span class="eyebrow">Преимущества</span><h2>Решение для промышленной эксплуатации</h2></div>
-        <p>Основной акцент — не на абстрактных свойствах катализатора, а на его интеграции в действующий технологический процесс предприятия.</p>
-      </div>
-      <div class="advantages-grid">
-        <article class="adv reveal"><small>01</small><h3>Российская разработка</h3><p>Локальное технологическое решение для задач сероочистки нефтегазового сырья.</p></article>
-        <article class="adv reveal"><small>02</small><h3>Широкая применимость</h3><p>Различные углеводородные и технологические потоки — после проверки условий применения.</p></article>
-        <article class="adv reveal"><small>03</small><h3>Инженерный подбор</h3><p>Подбор марки и режима работы с учётом реальных параметров установки заказчика.</p></article>
-        <article class="adv reveal"><small>04</small><h3>Прямой контакт</h3><p>Обсуждение задачи со специалистами без многоуровневой цепочки посредников.</p></article>
-      </div>
-    </div>
-  </section>
-
-  <section class="evidence reveal">
-    <div class="evidence-inner">
-      <div class="evidence-copy">
-        <span class="eyebrow">Промышленный опыт</span>
-        <h2>Технология, применяемая на производственных объектах</h2>
-        <p>В открытых отраслевых материалах семейство ИВКАЗ описывается как катализатор, применявшийся на десятках промышленных установок в России, СНГ и других странах. Параметры конкретного внедрения и референс-лист предоставляются по запросу и при наличии права на раскрытие.</p>
-      </div>
-      <div class="evidence-metrics">
-        <div class="metric"><strong>40+</strong><span>установок упоминается в открытых отраслевых материалах</span></div>
-        <div class="metric"><strong>НПЗ / ГПЗ</strong><span>целевая промышленная инфраструктура применения</span></div>
-        <div class="metric"><strong>B2B</strong><span>техническое согласование и проектная поставка</span></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="company">
-    <div class="container">
-      <div class="section-head reveal">
-        <div><span class="eyebrow">О компании</span><h2>АО «ТИОЛ»</h2></div>
-        <p>Научно-техническая организация из Казани, работающая в области исследований и разработок в естественных и технических науках.</p>
-      </div>
-      <div class="about-grid">
-        <article class="about-card reveal">
-          <h3>Компетенция в промышленной химии</h3>
-          <p>Компания предлагает катализатор сероочистки ИВКАЗ промышленным заказчикам и рассматривает обращения по подбору решения для конкретного технологического процесса.</p>
-          <p>Приоритет сайта — предоставить инженерам, технологам и закупочным подразделениям достоверную исходную информацию и прямой канал связи.</p>
-        </article>
-        <article class="about-card reveal">
-          <h3>Реквизиты</h3>
-          <div class="requisites">
-            <div class="req"><small>Наименование</small><strong>АО «ТИОЛ»</strong></div>
-            <div class="req"><small>ИНН</small><strong>1660075283</strong></div>
-            <div class="req"><small>ОГРН</small><strong>1041630232742</strong></div>
-            <div class="req"><small>Год регистрации</small><strong>2004</strong></div>
-            <div class="req"><small>Город</small><strong>Казань</strong></div>
-            <div class="req"><small>Адрес</small><strong>ул. Николая Ершова, 35А</strong></div>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="contact" id="contacts">
-    <div class="container">
-      <div class="contact-box reveal">
-        <div class="contact-copy">
-          <span class="eyebrow">Связаться</span>
-          <h2>Обсудить задачу сероочистки</h2>
-          <p>Направьте исходные данные по сырью и установке. Представитель АО «ТИОЛ» свяжется с вами для уточнения задачи и подготовки технической информации.</p>
-          <div class="contact-links">
-            <a class="contact-link" href="tel:+79172491589"><i>☎</i><span>+7 917 249-15-89</span></a>
-            <a class="contact-link" href="mailto:tiol.zao@mail.ru"><i>✉</i><span>tiol.zao@mail.ru</span></a>
-          </div>
-        </div>
-        <form id="requestForm">
-          <div class="field"><label for="name">Имя и должность</label><input id="name" name="name" required placeholder="Иван Петров, главный технолог"></div>
-          <div class="field"><label for="company">Компания</label><input id="company" name="company" required placeholder="Название предприятия"></div>
-          <div class="field"><label for="contact">Телефон или e-mail</label><input id="contact" name="contact" required placeholder="+7 ... / name@company.ru"></div>
-          <div class="field"><label for="message">Кратко о задаче</label><textarea id="message" name="message" placeholder="Тип сырья, текущая схема очистки, производительность, требуемый результат"></textarea></div>
-          <button class="btn btn-primary" type="submit">Подготовить письмо →</button>
-          <p class="form-note">После нажатия откроется почтовая программа с заполненным обращением. Данные не передаются на сторонний сервер.</p>
-          <div class="form-status" id="formStatus" aria-live="polite"></div>
-        </form>
-      </div>
-    </div>
-  </section>
-</main>
-
-
-<div class="modal" id="letterModal" aria-hidden="true">
-  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="letterModalTitle">
-    <div class="modal-head">
-      <div>
-        <h3 id="letterModalTitle">Письмо сформировано</h3>
-        <p>Скопируйте текст и отправьте его на указанную электронную почту.</p>
-      </div>
-      <button class="modal-close" id="modalClose" type="button" aria-label="Закрыть окно">×</button>
-    </div>
-    <div class="modal-body">
-      <div class="mail-destination">
-        <small>Получатель</small>
-        <strong>tiol.zao@mail.ru</strong>
-      </div>
-      <div class="letter-preview" id="letterPreview"></div>
-      <div class="modal-actions">
-        <button class="btn btn-primary" id="copyLetter" type="button">Скопировать письмо</button>
-        <button class="btn btn-secondary" id="copyEmail" type="button">Скопировать e-mail</button>
-        <button class="btn btn-secondary" id="modalCancel" type="button">Закрыть</button>
-      </div>
-      <div class="copy-status" id="copyStatus" aria-live="polite"></div>
-    </div>
-  </div>
+<section class="hero">
+<div class="container">
+<div class="hero-content reveal">
+<span class="eyebrow">Промышленная сероочистка</span>
+<h1>Технологии и <span>катализаторы</span></h1>
+<p class="hero-lead">Для очистки углеводородного сырья от сероводорода и меркаптанов на нефтеперерабатывающих и газоперерабатывающих предприятиях</p>
+<div class="hero-actions">
+<a class="btn btn-primary" href="#contacts">Получить техническую информацию →</a>
+<a class="btn btn-secondary" href="#product">Изучить катализаторы</a>
 </div>
-
+<div class="hero-facts">
+<span class="fact"><i></i> Для НПЗ и ГПЗ</span>
+<span class="fact"><i></i> Промышленное применение</span>
+<span class="fact"><i></i> Техническая консультация</span>
+<span class="fact"><i></i> Промысловая подготовка нефти</span>
+</div>
+</div>
+</div>
+</section>
+<section id="product">
+<div class="container">
+<div class="section-head reveal">
+<div>
+<span class="eyebrow">Катализаторы</span>
+<h2>Катализаторы для очистки сырья от сернистых соединений</h2>
+</div>
+<p><strong class="section-kicker">Применение.</strong> Конкретная марка катализатора и технологическая схема подбираются с учётом состава сырья, параметров установки и требований к очищенному продукту.</p>
+</div>
+<div class="product-grid catalyst-layout">
+<div aria-label="Семейства катализаторов" class="catalyst-selector reveal">
+<div class="selector-top">
+<span class="selector-label">Катализаторы</span>
+<h3>Выберите семейство, чтобы посмотреть виды и марки</h3>
+<p>Описание раскрывается прямо на странице — без перехода на отдельный сайт.</p>
+</div>
+<article class="family-item" id="family-ivkaz">
+<button aria-controls="ivkaz-details" aria-expanded="false" class="family-toggle" type="button">
+<span class="family-title-wrap"><span class="family-index">01</span><span><strong>ИВКАЗ</strong><small>4 марки катализаторов</small></span></span>
+<span aria-hidden="true" class="family-plus"></span>
+</button>
+<div class="family-details" id="ivkaz-details">
+<div class="family-details-inner">
+<div class="variant-list">
+<div class="variant"><span class="variant-num">01</span><div><strong>ИВКАЗ (п)</strong><p>Порошковая форма ДСФК.</p></div></div>
+<div class="variant"><span class="variant-num">02</span><div><strong>ИВКАЗ (р)</strong><p>Водный или слабощелочной раствор ДСФК.</p></div></div>
+<div class="variant"><span class="variant-num">03</span><div><strong>ИВКАЗ-ВАР</strong><p>Высокоэффективный усовершенствованный российский фталоцианиновый катализатор, аналог Merox WS, ARI-100 и LCPS 30. Применяется взамен указанных катализаторов без изменения технологии ведения процесса демеркаптанизации углеводородного сырья.</p></div></div>
+<div class="variant"><span class="variant-num">04</span><div><strong>ИВКАЗ-ДАР</strong><p>Предназначен для бесщелочной окислительно-каталитической технологии демеркаптанизации нефти.</p></div></div>
+</div>
+</div>
+</div>
+</article>
+<article class="family-item" id="family-kst">
+<button aria-controls="kst-details" aria-expanded="false" class="family-toggle" type="button">
+<span class="family-title-wrap"><span class="family-index">02</span><span><strong>КСТ</strong><small>4 вида каталитических композиций</small></span></span>
+<span aria-hidden="true" class="family-plus"></span>
+</button>
+<div class="family-details" id="kst-details">
+<div class="family-details-inner">
+<div class="variant-list">
+<div class="variant"><span class="variant-num">01</span><div><strong>КСТ, вид А</strong><p>Аминовый раствор ПКФ.</p></div></div>
+<div class="variant"><span class="variant-num">02</span><div><strong>КСТ, вид В</strong><p>Водный раствор ПКФ.</p></div></div>
+<div class="variant"><span class="variant-num">03</span><div><strong>КСТ, вид С</strong><p>Щелочной раствор ПКФ.</p></div></div>
+<div class="variant"><span class="variant-num">04</span><div><strong>КСТ, вид Д</strong><p>Аммиачный раствор ПКФ.</p></div></div>
+</div>
+</div>
+</div>
+</article>
+</div>
+<div class="product-copy catalyst-copy">
+<article class="info-card reveal">
+<span class="info-num">01 / ПРИМЕНЕНИЕ</span>
+<h3>Для нефтегазоперерабатывающих производств</h3>
+<p>Катализаторы применяются на нефте- и газоперерабатывающих заводах в процессах очистки газов, нефти, нефтепродуктов, сернисто-щелочных и бытовых канализационных стоков от сернистых соединений</p>
+<a class="inline-link" href="#applications">Посмотреть перечень технологий →</a>
+</article>
+<article class="info-card reveal">
+<span class="info-num">02 / ПОДБОР</span>
+<h3>Под конкретную установку</h3>
+<p>Рекомендации формируются с учётом состава сырья, текущей технологической схемы, производительности и требований к очищенному продукту</p>
+</article>
+</div>
+</div>
+</div>
+</section>
+<section class="applications" id="applications">
+<div class="container">
+<div class="section-head reveal">
+<div>
+<span class="eyebrow">Области применения</span>
+<h2>Технологии применения катализаторов</h2>
+</div>
+<p>Перечень процессов очистки газов, нефтей, нефтепродуктов, сернисто-щелочных и бытовых канализационных стоков от сернистых соединений</p>
+</div>
+<div class="cards applications-list">
+<article class="app-card reveal"><div class="app-icon">01</div><h3>Нефть и газоконденсаты</h3><p>Щелочная очистка нефти и газоконденсатов от сероводорода и меркаптанов</p></article>
+<article class="app-card reveal"><div class="app-icon">02</div><h3>Сжиженные углеводородные газы</h3><p>Щелочная очистка СУГ от сероводорода и меркаптанов</p></article>
+<article class="app-card reveal"><div class="app-icon">03</div><h3>Бензиновые фракции</h3><p>Очистка прямогонной бензиновой фракции 62–180 °C или бензина каталитического крекинга с высоким содержанием меркаптановой серы от сероводорода и меркаптанов</p></article>
+<article class="app-card reveal"><div class="app-icon">04</div><h3>Сернистые газоконденсаты и лёгкие фракции</h3><p>Очистка от сероводорода и низкомолекулярных меркаптанов</p></article>
+<article class="app-card reveal"><div class="app-icon">05</div><h3>Пентан-гексановая фракция</h3><p>Очистка пентан-гексановой фракции от меркаптанов</p></article>
+<article class="app-card reveal"><div class="app-icon">06</div><h3>Сернисто-щелочные стоки и конденсаты</h3><p>Очистка сернисто-щелочных стоков (СЩС) и водных технологических конденсатов от сернистых соединений</p></article>
+<article class="app-card reveal"><div class="app-icon">07</div><h3>Окислительно-каталитическая очистка нефтей</h3><p>Очистка нефтей от сероводорода и меркаптанов</p></article>
+<article class="app-card reveal"><div class="app-icon">08</div><h3>Процессы Merox</h3><p>Применение катализаторов в процессах Merox</p></article>
+<article class="app-card reveal"><div class="app-icon">09</div><h3>Процессы Merichem</h3><p>Применение катализаторов в процессах Merichem</p></article>
+<article class="app-card reveal"><div class="app-icon">10</div><h3>Бытовые канализационные стоки</h3><p>Очистка бытовых канализационных стоков от сероводорода и меркаптанов на КНС и ЛОС</p></article>
+</div>
+</div>
+</section>
+<section>
+<div class="container process-wrap">
+<div class="process-copy reveal">
+<span class="eyebrow">Работа с заказчиком</span>
+<h2>От исходных данных до внедрения</h2>
+<p>Поставка промышленного катализатора начинается не с типового коммерческого предложения, а с проверки применимости решения к конкретному процессу</p>
+<div class="process-list">
+<div class="process-step"><b>01</b><div><strong>Получаем параметры</strong><span>Состав сырья, сернистые соединения, производительность и текущая схема очистки</span></div></div>
+<div class="process-step"><b>02</b><div><strong>Анализируем задачу</strong><span>Определяем подходящую марку, способ дозирования и требования к внедрению</span></div></div>
+<div class="process-step"><b>03</b><div><strong>Готовим предложение</strong><span>Предоставляем техническую информацию и условия поставки для согласования</span></div></div>
+</div>
+</div>
+<div class="process-visual reveal">
+<div class="diagram">
+<div><strong>Исходный поток</strong>Сероводород и меркаптаны</div>
+<div><strong>Каталитический процесс</strong>Окисление и регенерация</div>
+<div><strong>Результат</strong>Очищенный продукт</div>
+</div>
+</div>
+</div>
+</section>
+<section id="advantages">
+<div class="container">
+<div class="section-head reveal">
+<div><span class="eyebrow">Преимущества</span><h2>Решение для промышленной эксплуатации</h2></div>
+<p>Применение технологий и катализаторов ориентировано на интеграцию в действующий технологический процесс предприятия</p>
+</div>
+<div class="advantages-grid">
+<article class="adv reveal"><small>01</small><h3>Собственные патентованные разработки</h3><p>Собственные технологические решения для задач сероочистки. АО «ТИОЛ» — эксклюзивный дистрибьютор по продаже катализаторов марок ИВКАЗ</p></article>
+<article class="adv reveal"><small>02</small><h3>Широкая применимость</h3><p>Различные углеводородные и технологические потоки — после проверки условий применения</p></article>
+<article class="adv reveal"><small>03</small><h3>Подбор технологии</h3><p>Подбор технологии, марки катализатора и режима работы с учётом реальных условий эксплуатации</p></article>
+<article class="adv reveal"><small>04</small><h3>Прямой контакт</h3><p>Обсуждение задачи со специалистами без многоуровневой цепочки посредников</p></article>
+</div>
+</div>
+</section>
+<section class="evidence reveal">
+<div class="evidence-inner">
+<div class="evidence-copy">
+<span class="eyebrow">Промышленный опыт</span>
+<h2>Технология, применяемая на производственных объектах</h2>
+<p>В открытых отраслевых материалах семейство ИВКАЗ описывается как катализатор, применявшийся на десятках промышленных установок в России, СНГ и других странах. Параметры конкретного внедрения и референс-лист предоставляются по запросу и при наличии права на раскрытие.</p>
+</div>
+<div class="evidence-metrics">
+<div class="metric"><strong>40+</strong><span>установок упоминается в открытых отраслевых материалах</span></div>
+<div class="metric"><strong>НПЗ / ГПЗ</strong><span>целевая промышленная инфраструктура применения</span></div>
+<div class="metric"><strong>B2B</strong><span>техническое согласование и проектная поставка</span></div>
+</div>
+</div>
+</section>
+<section id="company">
+<div class="container">
+<div class="section-head reveal">
+<div><span class="eyebrow">О компании</span><h2>АО «ТИОЛ»</h2></div>
+<p>Научно-техническая организация из Казани, работающая в области исследований и разработок в естественных и технических науках</p>
+</div>
+<div class="about-grid">
+<article class="about-card reveal">
+<h3>Компетенция в промышленной химии</h3>
+<p>Компания предлагает катализатор сероочистки ИВКАЗ промышленным заказчикам и рассматривает обращения по подбору решения для конкретного технологического процесса</p>
+<p>Приоритет сайта — предоставить инженерам, технологам и закупочным подразделениям достоверную исходную информацию и прямой канал связи</p>
+</article>
+<article class="about-card reveal">
+<h3>Реквизиты</h3>
+<div class="requisites">
+<div class="req"><small>Наименование</small><strong>АО «ТИОЛ»</strong></div>
+<div class="req"><small>ИНН</small><strong>1660075283</strong></div>
+<div class="req"><small>ОГРН</small><strong>1041630232742</strong></div>
+<div class="req"><small>Год регистрации</small><strong>2004</strong></div>
+<div class="req"><small>Город</small><strong>Казань</strong></div>
+<div class="req"><small>Адрес</small><strong>ул. Николая Ершова, 35А</strong></div>
+</div>
+</article>
+</div>
+</div>
+</section>
+<section class="contact" id="contacts">
+<div class="container">
+<div class="contact-box reveal">
+<div class="contact-copy">
+<span class="eyebrow">Связаться</span>
+<h2>Обсудить задачу сероочистки</h2>
+<p>Направьте исходные данные по сырью и установке. Представитель АО «ТИОЛ» свяжется с вами для уточнения задачи и подготовки технической информации</p>
+<div class="contact-links">
+<a class="contact-link" href="tel:+79172491589"><i>☎</i><span>+7 917 249-15-89</span></a>
+<a class="contact-link" href="mailto:tiol.zao@mail.ru"><i>✉</i><span>tiol.zao@mail.ru</span></a>
+</div>
+</div>
+<form id="requestForm">
+<div class="field"><label for="name">Имя и должность</label><input id="name" name="name" placeholder="Иван Петров, главный технолог" required=""/></div>
+<div class="field"><label for="requestCompany">Компания</label><input id="requestCompany" name="company" placeholder="Название предприятия" required=""/></div>
+<div class="field"><label for="contact">Телефон или e-mail</label><input id="contact" name="contact" placeholder="+7 ... / name@company.ru" required=""/></div>
+<div class="field"><label for="message">Кратко о задаче</label><textarea id="message" name="message" placeholder="Тип сырья, текущая схема очистки, производительность, требуемый результат"></textarea></div>
+<button class="btn btn-primary" type="submit">Подготовить письмо →</button>
+<p class="form-note">После нажатия сформируется готовое письмо. Его можно будет скопировать и отправить на указанную электронную почту. Данные не передаются на сторонний сервер</p>
+<div aria-live="polite" class="form-status" id="formStatus"></div>
+</form>
+</div>
+</div>
+</section>
+</main>
+<div aria-hidden="true" class="modal" id="letterModal">
+<div aria-labelledby="letterModalTitle" aria-modal="true" class="modal-card" role="dialog">
+<div class="modal-head">
+<div>
+<h3 id="letterModalTitle">Письмо сформировано</h3>
+<p>Скопируйте текст и отправьте его на указанную электронную почту</p>
+</div>
+<button aria-label="Закрыть окно" class="modal-close" id="modalClose" type="button">×</button>
+</div>
+<div class="modal-body">
+<div class="mail-destination">
+<small>Получатель</small>
+<strong>tiol.zao@mail.ru</strong>
+</div>
+<div class="letter-preview" id="letterPreview"></div>
+<div class="modal-actions">
+<button class="btn btn-primary" id="copyLetter" type="button">Скопировать письмо</button>
+<button class="btn btn-secondary" id="copyEmail" type="button">Скопировать e-mail</button>
+<button class="btn btn-secondary" id="modalCancel" type="button">Закрыть</button>
+</div>
+<div aria-live="polite" class="copy-status" id="copyStatus"></div>
+</div>
+</div>
+</div>
 <footer>
-  <div class="container footer-row">
-    <div>© <span id="year"></span> АО «ТИОЛ». Катализатор сероочистки ИВКАЗ.</div>
-    <div>Информация на сайте не является публичной офертой.</div>
-  </div>
+<div class="container footer-row">
+<div>© <span id="year"></span> АО «ТИОЛ». Катализатор сероочистки ИВКАЗ.</div>
+<div>Информация на сайте не является публичной офертой</div>
+</div>
 </footer>
-
 <script>
   const header = document.getElementById('header');
   const menuBtn = document.getElementById('menuBtn');
@@ -819,6 +921,25 @@
 
   window.addEventListener('resize', () => {
     if (window.innerWidth > 980) closeMenu();
+  });
+
+
+  document.querySelectorAll('.family-toggle').forEach(button => {
+    button.addEventListener('click', () => {
+      const item = button.closest('.family-item');
+      const isOpen = item.classList.contains('open');
+
+      document.querySelectorAll('.family-item.open').forEach(openItem => {
+        openItem.classList.remove('open');
+        const openButton = openItem.querySelector('.family-toggle');
+        if (openButton) openButton.setAttribute('aria-expanded', 'false');
+      });
+
+      if (!isOpen) {
+        item.classList.add('open');
+        button.setAttribute('aria-expanded', 'true');
+      }
+    });
   });
 
   const observer = new IntersectionObserver(entries => {
