@@ -69,7 +69,7 @@
     header {
       position: fixed;
       inset: 0 0 auto;
-      z-index: 50;
+      z-index: 90;
       border-bottom: 1px solid transparent;
       transition: .25s ease;
     }
@@ -121,7 +121,7 @@
       color:white;
       cursor:pointer;
       position:relative;
-      z-index:70;
+      z-index:110;
       align-items:center;
       justify-content:center;
       padding:0;
@@ -142,17 +142,23 @@
     .menu-btn.active span { opacity:0; }
     .menu-btn.active::before { transform:rotate(45deg); }
     .menu-btn.active::after { transform:rotate(-45deg); }
+    .menu-btn.active { background:#102a38; border-color:rgba(140,241,237,.28); }
 
     .menu-overlay {
       position:fixed;
       inset:0;
-      z-index:55;
-      background:rgba(2,9,14,.68);
+      z-index:80;
+      background:rgba(2,9,14,.62);
       opacity:0;
       visibility:hidden;
-      transition:.25s ease;
+      pointer-events:none;
+      transition:opacity .22s ease, visibility .22s ease;
     }
-    .menu-overlay.open { opacity:1; visibility:visible; }
+    .menu-overlay.open {
+      opacity:1;
+      visibility:visible;
+      pointer-events:auto;
+    }
 
     .hero {
       min-height: 820px;
@@ -229,7 +235,9 @@
     h2 { margin:13px 0 0; font-size:clamp(36px, 5vw, 64px); line-height:1.02; letter-spacing:-.04em; max-width:850px; }
     .section-head p { color:var(--muted); max-width:480px; margin:0; }
 
-    .product-grid { display:grid; grid-template-columns: 1.04fr .96fr; gap:26px; }
+    .product-grid { display:grid; grid-template-columns: 1.04fr .96fr; gap:26px; min-width:0; }
+    .product-grid > *, .catalyst-selector, .catalyst-copy { min-width:0; max-width:100%; }
+    .btn, .family-toggle, .menu-btn { touch-action:manipulation; -webkit-tap-highlight-color:transparent; }
     .product-visual {
       min-height: 570px;
       border-radius: var(--radius);
@@ -478,7 +486,7 @@
     .modal {
       position:fixed;
       inset:0;
-      z-index:100;
+      z-index:200;
       display:grid;
       place-items:center;
       padding:18px;
@@ -557,6 +565,11 @@
     .reveal.visible { opacity:1; transform:none; }
 
     @media (max-width: 980px) {
+      header.scrolled {
+        background:#07131d;
+        backdrop-filter:none;
+        -webkit-backdrop-filter:none;
+      }
       .nav-action { display:none; }
       .menu-btn { display:flex; }
       .nav-links {
@@ -564,47 +577,55 @@
         position:fixed;
         top:0;
         right:0;
-        z-index:60;
-        width:min(86vw, 360px);
+        z-index:95;
+        width:min(88vw, 370px);
+        max-width:100%;
+        height:100vh;
         height:100dvh;
-        padding:108px 28px 34px;
+        padding:calc(96px + env(safe-area-inset-top, 0px)) 20px calc(28px + env(safe-area-inset-bottom, 0px));
         flex-direction:column;
         align-items:stretch;
         gap:10px;
-        background:linear-gradient(180deg, #0b1f2c, #07131d);
+        background:#081923;
         border-left:1px solid rgba(255,255,255,.10);
-        box-shadow:-28px 0 70px rgba(0,0,0,.38);
-        transform:translateX(105%);
-        transition:transform .28s ease;
+        box-shadow:-28px 0 70px rgba(0,0,0,.42);
+        transform:translate3d(105%,0,0);
+        transition:transform .26s ease;
         overflow-y:auto;
+        overscroll-behavior:contain;
+        -webkit-overflow-scrolling:touch;
       }
-      .nav-links.open { transform:translateX(0); }
+      .nav-links.open { transform:translate3d(0,0,0); }
       .nav-links a {
         display:flex;
         align-items:center;
-        min-height:56px;
-        padding:0 16px;
-        border:1px solid rgba(255,255,255,.08);
+        min-height:58px;
+        padding:0 17px;
+        border:1px solid rgba(255,255,255,.09);
         border-radius:14px;
         background:rgba(255,255,255,.035);
         color:#eef5f7;
         font-size:18px;
         font-weight:700;
       }
-      .nav-links a:hover { background:rgba(35,201,204,.09); border-color:rgba(35,201,204,.35); }
-      .product-grid, .process-wrap, .evidence-inner, .about-grid, .contact-box { grid-template-columns:1fr; }
-      .cards { grid-template-columns:1fr 1fr; }
-      .advantages-grid { grid-template-columns:1fr 1fr; }
-      .catalyst-layout { grid-template-columns:1fr; }
-      .catalyst-selector { order:1; }
-      .catalyst-copy { order:2; }
+      .nav-links a:active { background:rgba(35,201,204,.12); border-color:rgba(35,201,204,.42); }
+      .product-grid, .process-wrap, .evidence-inner, .about-grid, .contact-box { grid-template-columns:minmax(0,1fr); }
+      .cards { grid-template-columns:repeat(2,minmax(0,1fr)); }
+      .advantages-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+      .catalyst-layout { grid-template-columns:minmax(0,1fr); }
+      .catalyst-selector { order:1; width:100%; }
+      .catalyst-copy { order:2; width:100%; }
       .process-visual { min-height:500px; }
       .evidence-copy, .evidence-metrics, .contact-copy, form { padding:38px; }
     }
 
     @media (max-width: 640px) {
-      .container { width:min(calc(100% - 26px), var(--max)); }
-      .hero { min-height:780px; padding-top:120px; }
+      .container { width:calc(100% - 26px); max-width:100%; }
+      .nav { height:82px; gap:14px; }
+      .brand strong { font-size:15px; }
+      .brand small { font-size:9px; letter-spacing:.1em; }
+      .menu-btn { width:46px; height:46px; flex:0 0 46px; }
+      .hero { min-height:auto; padding:128px 0 72px; }
       .hero::before { background-position:61% center; }
       .hero::after {
         right:-72px;
@@ -612,34 +633,64 @@
         width:230px;
         height:230px;
         box-shadow:0 0 0 34px rgba(35,201,204,.022), 0 0 0 68px rgba(35,201,204,.014);
+        pointer-events:none;
       }
-      h1 { font-size:52px; }
-      section { padding:78px 0; }
+      h1 { font-size:clamp(44px, 13vw, 52px); line-height:.98; }
+      .hero-lead { font-size:18px; line-height:1.55; }
+      .hero-actions { display:grid; grid-template-columns:1fr; gap:12px; margin-bottom:34px; }
+      .hero-actions .btn {
+        width:100%;
+        min-height:58px;
+        padding:10px 16px;
+        font-size:15px;
+        line-height:1.25;
+        text-align:center;
+      }
+      .hero-actions .btn-primary { white-space:nowrap; }
+      section { padding:74px 0; }
+      h2 { font-size:clamp(34px, 10.5vw, 42px); overflow-wrap:anywhere; }
       .section-head { display:block; }
-      .section-head p { margin-top:20px; }
-      .cards, .advantages-grid { grid-template-columns:1fr; }
+      .section-head p { margin-top:18px; font-size:16px; }
+      .product-grid { gap:18px; width:100%; }
+      .cards, .advantages-grid { grid-template-columns:minmax(0,1fr); }
       .product-visual { min-height:430px; }
-      .hero-facts { grid-template-columns:repeat(2, minmax(0, 1fr)); gap:10px; }
-      .fact { min-height:64px; padding:12px 13px; font-size:15px; align-items:flex-start; }
-      .family-toggle { padding:20px 20px; }
+      .hero-facts { grid-template-columns:repeat(2, minmax(0, 1fr)); gap:10px; max-width:none; }
+      .fact { min-height:64px; padding:12px 13px; font-size:15px; align-items:flex-start; backdrop-filter:none; -webkit-backdrop-filter:none; }
+      .catalyst-selector { border-radius:20px; }
       .selector-top { padding:24px 20px 20px; }
-      .variant-list { padding:0 20px 20px; }
-      .variant { grid-template-columns:32px 1fr; }
+      .selector-top h3 { font-size:25px; line-height:1.14; overflow-wrap:break-word; }
+      .selector-top p { font-size:15px; line-height:1.5; }
+      .family-toggle { padding:20px 18px; gap:12px; }
+      .family-title-wrap { gap:12px; min-width:0; }
+      .family-title-wrap > span:last-child { min-width:0; }
       .family-title-wrap strong { font-size:21px; }
+      .family-title-wrap small { font-size:13px; line-height:1.35; white-space:normal; overflow-wrap:anywhere; }
+      .family-plus { width:30px; height:30px; flex:0 0 30px; }
+      .variant-list { padding:0 18px 18px; }
+      .variant { grid-template-columns:30px minmax(0,1fr); gap:12px; padding:17px 0; }
+      .variant p { font-size:14px; line-height:1.55; overflow-wrap:anywhere; }
       .applications-list .app-card { min-height:auto; }
       .diagram { grid-template-columns:1fr; }
-      .diagram div { min-height:auto; }
+      .diagram div { min-height:auto; backdrop-filter:none; -webkit-backdrop-filter:none; }
       .process-visual { min-height:600px; }
-      .evidence { width:calc(100% - 26px); margin:78px auto; }
+      .evidence { width:calc(100% - 26px); margin:74px auto; }
       .evidence-copy, .evidence-metrics, .contact-copy, form, .about-card { padding:27px; }
+      .contact-link { font-size:16px; overflow-wrap:anywhere; }
+      .modal { padding:12px; backdrop-filter:none; -webkit-backdrop-filter:none; }
+      .modal-card { max-height:calc(100dvh - 24px); border-radius:18px; }
+      .modal-head, .modal-body { padding-left:18px; padding-right:18px; }
+      .modal-actions { display:grid; grid-template-columns:1fr; }
+      .modal-actions .btn { width:100%; min-height:52px; }
       .requisites { grid-template-columns:1fr; }
       .footer-row { display:block; }
       .footer-row div + div { margin-top:8px; }
     }
 
     @media (max-width: 420px) {
+      .hero-actions .btn-primary { white-space:normal; }
       .hero-facts { grid-template-columns:1fr; }
       .fact { min-height:52px; align-items:center; }
+      .nav-links { width:92vw; }
     }
   </style>
 </head>
@@ -708,7 +759,7 @@
 <div class="variant-list">
 <div class="variant"><span class="variant-num">01</span><div><strong>ИВКАЗ (п)</strong><p>Порошковая форма ДСФК</p></div></div>
 <div class="variant"><span class="variant-num">02</span><div><strong>ИВКАЗ (р)</strong><p>Водный или слабощелочной раствор ДСФК</p></div></div>
-<div class="variant"><span class="variant-num">03</span><div><strong>ИВКАЗ-ВАР</strong><p>Высокоэффективный усовершенствованный российский фталоцианиновый катализатор, аналог Merox WS, ARI-100 и LCPS 30. Применяется взамен указанных катализаторов без изменения технологии ведения процесса демеркаптанизации углеводородного сырья</p></div></div>
+<div class="variant"><span class="variant-num">03</span><div><strong>ИВКАЗ-ВАР</strong><p>Высокоэффективный усовершенствованный российский фталоцианиновый катализатор, аналог Merox WS, ARI-100, LCPS 30, Europhtal Catalyst и других гомогенных катализаторов на основе фталоцианина кобальта. Применяется взамен фталоцианиновых катализаторов без изменения технологии ведения процесса демеркаптанизации углеводородного сырья</p></div></div>
 <div class="variant"><span class="variant-num">04</span><div><strong>ИВКАЗ-ДАР</strong><p>Предназначен для бесщелочной окислительно-каталитической технологии демеркаптанизации нефти</p></div></div>
 </div>
 </div>
@@ -911,6 +962,7 @@
     menuOverlay.classList.remove('open');
     menuBtn.classList.remove('active');
     menuBtn.setAttribute('aria-expanded', 'false');
+    menuBtn.setAttribute('aria-label', 'Открыть меню');
     document.body.classList.remove('menu-open');
   }
 
@@ -919,6 +971,7 @@
     menuOverlay.classList.add('open');
     menuBtn.classList.add('active');
     menuBtn.setAttribute('aria-expanded', 'true');
+    menuBtn.setAttribute('aria-label', 'Закрыть меню');
     document.body.classList.add('menu-open');
   }
 
@@ -931,7 +984,7 @@
   });
 
   menuOverlay.addEventListener('click', closeMenu);
-  navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+  navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => requestAnimationFrame(closeMenu)));
 
   window.addEventListener('resize', () => {
     if (window.innerWidth > 980) closeMenu();
