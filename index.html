@@ -231,6 +231,21 @@
     .fact i { width:9px; height:9px; flex:0 0 auto; border-radius:50%; background:var(--cyan); box-shadow:0 0 0 5px rgba(35,201,204,.10); }
 
     section { padding: 110px 0; }
+    .services { scroll-margin-top: 82px; }
+    .services-panel {
+      display:grid;
+      grid-template-columns:minmax(0,1fr) auto;
+      align-items:end;
+      gap:28px;
+      padding:clamp(22px, 5vw, 56px);
+      border:1px solid var(--line);
+      border-radius:24px;
+      background:linear-gradient(135deg, #102a37, #0b1d28);
+    }
+    .services-panel p { max-width:650px; margin:18px 0 0; color:var(--muted); }
+    .services-technologies { display:flex; flex-wrap:wrap; gap:8px; padding:0; margin:22px 0 0; list-style:none; }
+    .services-technologies li { padding:5px 12px; border:1px solid var(--line); border-radius:999px; }
+    .services-panel .btn { text-align:center; justify-content:center; }
     .section-head { display:flex; align-items:end; justify-content:space-between; gap:40px; margin-bottom:46px; }
     h2 { margin:13px 0 0; font-size:clamp(36px, 5vw, 64px); line-height:1.02; letter-spacing:-.04em; max-width:850px; }
     .section-head p { color:var(--muted); max-width:480px; margin:0; }
@@ -565,6 +580,7 @@
     .reveal.visible { opacity:1; transform:none; }
 
     @media (max-width: 980px) {
+      .services-panel { grid-template-columns:minmax(0,1fr); justify-items:start; }
       header.scrolled {
         background:#07131d;
         backdrop-filter:none;
@@ -743,6 +759,7 @@
 </a>
 <nav class="nav-links" id="navLinks">
 <a href="#product">Катализаторы</a>
+<a href="#services">Услуги</a>
 <a href="#applications">Применение</a>
 <a href="#advantages">Преимущества</a>
 <a href="#company">Компания</a>
@@ -836,6 +853,22 @@
 </article>
 </div>
 </div>
+</div>
+</section>
+<section class="services" id="services" aria-labelledby="services-title">
+<div class="container services-panel">
+<div>
+<span class="eyebrow">Консультационные услуги</span>
+<h2 id="services-title">Консультации по демеркаптанизации</h2>
+<p>Консультируем по ведению и оптимизации технологических процессов демеркаптанизации углеводородного сырья.</p>
+<ul class="services-technologies" aria-label="Технологии">
+<li>ДМС</li>
+<li>ДМД</li>
+<li>Merox</li>
+<li>Merichem</li>
+</ul>
+</div>
+<a class="btn btn-primary" href="#contacts">Обсудить задачу</a>
 </div>
 </section>
 <section class="applications" id="applications">
