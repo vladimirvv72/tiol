@@ -387,14 +387,15 @@
     .app-card p { margin:0; color:var(--muted); font-size:15px; }
 
     .process-wrap {
-      display:grid; grid-template-columns:.85fr 1.15fr; gap:45px; align-items:center;
+      display:grid; grid-template-columns:.85fr 1.15fr; gap:45px;
     }
     .process-copy p { color:var(--muted); font-size:18px; }
-    .process-list { margin-top:30px; display:grid; gap:14px; }
+    .process-list { margin-top:22px; display:grid; }
     .process-step {
       display:grid; grid-template-columns:52px 1fr; gap:16px; align-items:start;
-      padding:18px 0; border-top:1px solid var(--line);
+      padding:12px 0; border-top:1px solid var(--line);
     }
+    .process-step:last-child { padding-bottom:0; }
     .process-step b { color:var(--cyan-light); font-size:14px; }
     .process-step strong { display:block; font-size:18px; margin-bottom:4px; }
     .process-step span { color:var(--muted); font-size:14px; }
