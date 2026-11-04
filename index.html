@@ -231,7 +231,8 @@
     .fact i { width:9px; height:9px; flex:0 0 auto; border-radius:50%; background:var(--cyan); box-shadow:0 0 0 5px rgba(35,201,204,.10); }
 
     section { padding: 110px 0; }
-    .services { scroll-margin-top: 82px; padding:clamp(24px, 4vw, 48px) 0; }
+    #product { padding-bottom:16px; }
+    .services { scroll-margin-top: 82px; padding:12px 0 clamp(24px, 4vw, 48px); }
     .services-panel {
       display:grid;
       grid-template-columns:minmax(0,1fr) auto;
@@ -286,10 +287,11 @@
     .info-num { color:var(--cyan); font-size:13px; font-weight:800; letter-spacing:.12em; }
     .info-card h3 { margin:12px 0 8px; font-size:23px; }
     .info-card p { margin:0; color:var(--muted); }
+    .info-card-head { display:flex; align-items:baseline; justify-content:space-between; flex-wrap:wrap; gap:6px 12px; }
+    .info-card-head .inline-link { margin:0 0 0 auto; }
 
 
     .section-kicker { color:var(--text); font-weight:800; }
-    .catalyst-layout { align-items:start; }
     .catalyst-selector {
       position:relative;
       overflow:hidden;
@@ -849,10 +851,12 @@
 </div>
 <div class="product-copy catalyst-copy">
 <article class="info-card reveal">
+<div class="info-card-head">
 <span class="info-num">01 / ПРИМЕНЕНИЕ</span>
-<h3>Для НПЗ и ГПЗ</h3>
-<p>Катализаторы применяются на нефте- и газоперерабатывающих заводах в процессах очистки газов, нефти, нефтепродуктов, сернисто-щелочных и бытовых канализационных стоков от сернистых соединений</p>
 <a class="inline-link" href="#applications">Посмотреть перечень технологий →</a>
+</div>
+<h3>Для НПЗ и ГПЗ</h3>
+<p>Катализаторы удаляют сернистые соединения из газов, нефти, нефтепродуктов, сернисто-щелочных и бытовых канализационных стоков</p>
 </article>
 <article class="info-card reveal">
 <span class="info-num">02 / ПОДБОР</span>
