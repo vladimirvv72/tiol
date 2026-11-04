@@ -243,9 +243,10 @@
       border-radius:24px;
       background:linear-gradient(135deg, #102a37, #0b1d28);
     }
-    .services-panel p { max-width:650px; margin:18px 0 0; color:var(--muted); }
-    .services-panel h2 { font-size:clamp(24px, 6.5vw, 56px); overflow-wrap:anywhere; }
-    .services-technologies { display:flex; flex-wrap:wrap; gap:8px; padding:0; margin:22px 0 0; list-style:none; }
+    .services-copy { grid-column:1 / -1; }
+    .services-panel p { margin:18px 0 0; color:var(--muted); }
+    .services-panel h2 { max-width:none; font-size:clamp(24px, 4.2vw, 56px); overflow-wrap:anywhere; }
+    .services-technologies { display:flex; flex-wrap:wrap; gap:8px; padding:0; margin:0; list-style:none; }
     .services-technologies li { padding:5px 12px; border:1px solid var(--line); border-radius:999px; }
     .services-panel .btn { text-align:center; justify-content:center; }
     .section-head { display:flex; align-items:end; justify-content:space-between; gap:40px; margin-bottom:46px; }
@@ -869,17 +870,17 @@
 </section>
 <section class="services" id="services" aria-labelledby="services-title">
 <div class="container services-panel">
-<div>
+<div class="services-copy">
 <span class="eyebrow">Консультационные услуги</span>
 <h2 id="services-title">Консультации по демеркаптанизации</h2>
 <p>Консультируем по ведению и оптимизации технологических процессов демеркаптанизации углеводородного сырья</p>
+</div>
 <ul class="services-technologies" aria-label="Технологии">
 <li>ДМС</li>
 <li>ДМД</li>
 <li>Merox</li>
 <li>Merichem</li>
 </ul>
-</div>
 <a class="btn btn-primary" href="#contacts">Обсудить задачу</a>
 </div>
 </section>
