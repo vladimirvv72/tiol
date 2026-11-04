@@ -244,7 +244,7 @@
       background:linear-gradient(135deg, #102a37, #0b1d28);
     }
     .services-copy { grid-column:1 / -1; }
-    .services-panel h2 { max-width:none; font-size:clamp(24px, 4.2vw, 56px); overflow-wrap:anywhere; }
+    .services-panel h2 { max-width:none; overflow-wrap:anywhere; }
     .services-technologies { display:flex; flex-wrap:wrap; gap:8px; padding:0; margin:0; list-style:none; }
     .services-technologies li { padding:5px 12px; border:1px solid var(--line); border-radius:999px; }
     .services-panel .btn { text-align:center; justify-content:center; }
@@ -315,7 +315,8 @@
     }
     .selector-top { padding:30px 30px 25px; border-bottom:1px solid var(--line); position:relative; z-index:1; }
     .selector-label { color:var(--cyan-light); font-size:12px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; }
-    .selector-top h3 { margin:12px 0 8px; font-size:clamp(25px,3vw,34px); line-height:1.12; letter-spacing:-.025em; max-width:560px; }
+    .selector-top h3, .services-panel h2 { margin:12px 0 8px; font-size:clamp(25px,3vw,34px); line-height:1.12; letter-spacing:-.025em; }
+    .selector-top h3 { max-width:560px; }
     .selector-top p { margin:0; color:var(--muted); font-size:14px; }
     .family-item { position:relative; z-index:1; border-bottom:1px solid var(--line); }
     .family-item:last-child { border-bottom:0; }
@@ -684,7 +685,8 @@
       .fact { min-height:64px; padding:12px 13px; font-size:15px; align-items:flex-start; backdrop-filter:none; -webkit-backdrop-filter:none; }
       .catalyst-selector { border-radius:20px; }
       .selector-top { padding:24px 20px 20px; }
-      .selector-top h3 { font-size:25px; line-height:1.14; overflow-wrap:break-word; }
+      .selector-top h3, .services-panel h2 { font-size:25px; line-height:1.14; }
+      .selector-top h3 { overflow-wrap:break-word; }
       .selector-top p { font-size:15px; line-height:1.5; }
       .family-toggle { padding:20px 18px; gap:12px; }
       .family-title-wrap { gap:12px; min-width:0; }
@@ -870,6 +872,7 @@
 <section class="services" id="services" aria-labelledby="services-title">
 <div class="container services-panel">
 <div class="services-copy">
+<span class="selector-label">Услуги</span>
 <h2 id="services-title">Консультационные услуги по ведению и оптимизации технологических процессов демократизации углеводородного сырья</h2>
 </div>
 <ul class="services-technologies" aria-label="Технологии">
