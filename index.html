@@ -7,6 +7,7 @@
 <meta content="Технологии и катализаторы сероочистки ИВКАЗ и КСТ для нефтеперерабатывающих и газоперерабатывающих предприятий. Очистка углеводородного сырья от сероводорода, меркаптанов и других сернистых соединений." name="description"/>
 <meta content="#07131d" name="theme-color"/>
 <title>Технологии и катализаторы сероочистки | АО «ТИОЛ»</title>
+<link rel="icon" type="image/png" sizes="64x64" href="tiol-favicon.png">
 <style>
     :root {
       --bg: #07131d;
@@ -85,8 +86,8 @@
       justify-content: space-between;
       gap: 28px;
     }
-    .brand { display:flex; align-items:center; min-width:max-content; }
-    .brand strong { display: block; letter-spacing: .08em; font-size: 15px; }
+    .brand { display:grid; justify-items:start; gap:4px; min-width:max-content; }
+    .brand img { display:block; width:156px; height:auto; }
     .brand small { display: block; color: var(--muted); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; }
     .nav-links { display: flex; align-items: center; gap: 27px; color: #c7d3d9; font-size: 14px; }
     .nav-links a:hover { color: var(--white); }
@@ -648,7 +649,7 @@
     @media (max-width: 640px) {
       .container { width:calc(100% - 26px); max-width:100%; }
       .nav { height:82px; gap:14px; }
-      .brand strong { font-size:15px; }
+      .brand img { width:136px; }
       .brand small { font-size:9px; letter-spacing:.1em; }
       .menu-btn { width:46px; height:46px; flex:0 0 46px; }
       .hero { min-height:auto; padding:128px 0 72px; }
@@ -767,8 +768,8 @@
 <header id="header">
 <div class="container nav">
 <a aria-label="АО ТИОЛ — на главную" class="brand" href="#top">
-
-<span><strong>ТИОЛ</strong><small>Научно-техническая компания</small></span>
+<img src="tiol-logo.png" width="576" height="127" alt="">
+<small>Научно-техническая компания</small>
 </a>
 <nav class="nav-links" id="navLinks">
 <a href="#product">Катализаторы</a>
